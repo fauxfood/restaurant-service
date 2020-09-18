@@ -1,5 +1,7 @@
 package io.fauxstore.deals;
 
+import io.fauxstore.deals.db.DealsRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,6 +11,13 @@ import java.util.List;
 
 @RestController
 public class RootController {
+    private final DealsRepository dealsRepo;
+
+    @Autowired
+    public RootController(DealsRepository dealsRepo) {
+        this.dealsRepo = dealsRepo;
+    }
+
     @RequestMapping("/")
     @ResponseBody
     String home() {
@@ -17,14 +26,7 @@ public class RootController {
 
     @RequestMapping("/deals")
     List<Deal> deals() {
-        var response = Arrays.asList(
-                Deal.fakeDeal(),
-                Deal.fakeDeal(),
-                Deal.fakeDeal(),
-                Deal.fakeDeal(),
-                Deal.fakeDeal(),
-                Deal.fakeDeal()
-        );
-        return response;
+        final List<Deal> deals = dealsRepo.selectSomeDeals(10);
+        return deals;
     }
 }

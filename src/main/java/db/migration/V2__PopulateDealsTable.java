@@ -7,7 +7,6 @@ import org.flywaydb.core.api.migration.Context;
 import org.jdbi.v3.core.Jdbi;
 import org.jdbi.v3.sqlobject.SqlObjectPlugin;
 
-import java.sql.Statement;
 import java.util.stream.IntStream;
 
 public class V2__PopulateDealsTable extends BaseJavaMigration {
