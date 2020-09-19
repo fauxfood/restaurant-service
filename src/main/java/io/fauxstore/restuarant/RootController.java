@@ -2,9 +2,7 @@ package io.fauxstore.restuarant;
 
 import io.fauxstore.restuarant.db.RestaurantsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,15 +15,23 @@ public class RootController {
         this.restaurantsRepo = restaurantsRepo;
     }
 
-    @RequestMapping("/")
+    @GetMapping("/")
     @ResponseBody
     String home() {
         return "Welcome to Restaurants service (maybe you wanted /restaurants)";
     }
 
-    @RequestMapping("/restaurants")
+    @GetMapping("/restaurants")
     List<Restaurant> restaurants() {
         final List<Restaurant> restaurants = restaurantsRepo.allRestaurants();
         return restaurants;
+    }
+
+    @GetMapping("/restaurants/{slug}/menu")
+    RestaurantMenu restaurantMenu(@PathVariable("slug") String slug) {
+        final List<MenuItem> menuItems = restaurantsRepo.restaurantMenu(slug);
+        return RestaurantMenu.builder()
+                .menuItems(menuItems)
+            .build();
     }
 }

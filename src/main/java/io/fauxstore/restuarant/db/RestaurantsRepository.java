@@ -1,5 +1,6 @@
 package io.fauxstore.restuarant.db;
 
+import io.fauxstore.restuarant.MenuItem;
 import io.fauxstore.restuarant.Restaurant;
 import io.honeycomb.beeline.spring.beans.aspects.ChildSpan;
 import io.honeycomb.beeline.spring.beans.aspects.SpanField;
@@ -25,5 +26,10 @@ public class RestaurantsRepository {
     @ChildSpan("allRestaurants")
     public List<Restaurant> allRestaurants() {
         return jdbi.withExtension(RestaurantsDao.class, dao-> dao.selectAllRestaurants());
+    }
+
+    @ChildSpan("restaurantMenu")
+    public List<MenuItem> restaurantMenu(@SpanField String slug) {
+        return jdbi.withExtension(RestaurantsDao.class, dao-> dao.selectMenuItemsForRestaurant(slug));
     }
 }
