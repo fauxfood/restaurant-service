@@ -1,6 +1,6 @@
-package io.fauxstore.deals.db;
+package io.fauxstore.restuarant.db;
 
-import io.fauxstore.deals.Deal;
+import io.fauxstore.restuarant.Deal;
 import org.jdbi.v3.sqlobject.config.RegisterRowMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.customizer.BindBean;

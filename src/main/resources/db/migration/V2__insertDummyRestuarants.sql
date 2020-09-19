@@ -1,0 +1,1 @@
+INSERT INTO Restaurants(name) VALUES ('Taqueria Del Sol'),('Western Burgers'),('WhattaHotDog');

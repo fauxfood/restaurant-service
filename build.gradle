@@ -6,7 +6,7 @@ plugins {
 	id 'idea'
 }
 
-group = 'io.fauxstore'
+group = 'io.fauxfood'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 

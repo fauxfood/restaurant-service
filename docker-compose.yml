@@ -7,5 +7,5 @@ services:
     ports:
       - 5432:5432
     environment:
-      POSTGRES_USER: deals
-      POSTGRES_PASSWORD: deals
+      POSTGRES_USER: restaurant
+      POSTGRES_PASSWORD: restaurant

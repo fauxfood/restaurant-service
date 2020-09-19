@@ -1,4 +1,4 @@
-package io.fauxstore.deals;
+package io.fauxstore.restuarant;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

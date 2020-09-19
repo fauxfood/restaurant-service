@@ -1,6 +1,6 @@
-package io.fauxstore.deals.db;
+package io.fauxstore.restuarant.db;
 
-import io.fauxstore.deals.Deal;
+import io.fauxstore.restuarant.Deal;
 import io.honeycomb.beeline.spring.beans.aspects.ChildSpan;
 import io.honeycomb.beeline.spring.beans.aspects.SpanField;
 import io.honeycomb.beeline.tracing.Beeline;

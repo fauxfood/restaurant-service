@@ -1,4 +1,4 @@
-package io.fauxstore.deals;
+package io.fauxstore.restuarant;
 
 import com.github.javafaker.Faker;
 import lombok.Builder;
