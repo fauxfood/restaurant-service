@@ -1,6 +1,6 @@
 package io.fauxstore.restuarant.db;
 
-import io.fauxstore.restuarant.Deal;
+import io.fauxstore.restuarant.Restaurant;
 import io.honeycomb.beeline.spring.beans.aspects.ChildSpan;
 import io.honeycomb.beeline.spring.beans.aspects.SpanField;
 import io.honeycomb.beeline.tracing.Beeline;
@@ -11,24 +11,19 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class DealsRepository {
+public class RestaurantsRepository {
     private final Jdbi jdbi;
     private final Beeline beeline;
 
 
     @Autowired
-    public DealsRepository(Jdbi jdbi, Beeline beeline) {
+    public RestaurantsRepository(Jdbi jdbi, Beeline beeline) {
         this.jdbi = jdbi;
         this.beeline = beeline;
     }
 
-    @ChildSpan("insertDeal")
-    public void insertDeal(Deal deal){
-        jdbi.useExtension(DealsDao.class, dao-> dao.insert(deal));
-    }
-
-    @ChildSpan("selectSomeDeals")
-    public List<Deal> selectSomeDeals(@SpanField Integer numberOfDeals) {
-        return jdbi.withExtension(DealsDao.class, dao-> dao.selectN(numberOfDeals));
+    @ChildSpan("allRestaurants")
+    public List<Restaurant> allRestaurants() {
+        return jdbi.withExtension(RestaurantsDao.class, dao-> dao.selectAllRestaurants());
     }
 }

@@ -1,6 +1,6 @@
 package io.fauxstore.restuarant;
 
-import io.fauxstore.restuarant.db.DealsRepository;
+import io.fauxstore.restuarant.db.RestaurantsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -10,22 +10,22 @@ import java.util.List;
 
 @RestController
 public class RootController {
-    private final DealsRepository dealsRepo;
+    private final RestaurantsRepository restaurantsRepo;
 
     @Autowired
-    public RootController(DealsRepository dealsRepo) {
-        this.dealsRepo = dealsRepo;
+    public RootController(RestaurantsRepository restaurantsRepo) {
+        this.restaurantsRepo = restaurantsRepo;
     }
 
     @RequestMapping("/")
     @ResponseBody
     String home() {
-        return "Welcome to Deals service (maybe you wanted /deals)";
+        return "Welcome to Restaurants service (maybe you wanted /restaurants)";
     }
 
-    @RequestMapping("/deals")
-    List<Deal> deals() {
-        final List<Deal> deals = dealsRepo.selectSomeDeals(10);
-        return deals;
+    @RequestMapping("/restaurants")
+    List<Restaurant> restaurants() {
+        final List<Restaurant> restaurants = restaurantsRepo.allRestaurants();
+        return restaurants;
     }
 }

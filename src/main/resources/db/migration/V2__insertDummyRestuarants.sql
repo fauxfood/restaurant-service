@@ -1,1 +1,4 @@
-INSERT INTO Restaurants(name) VALUES ('Taqueria Del Sol'),('Western Burgers'),('WhattaHotDog');
+INSERT INTO Restaurants(slug,name)
+VALUES ('taqdelsol','Taqueria Del Sol'),
+    ('westernb','Western Burgers'),
+    ('whatta','WhattaHotDog');
